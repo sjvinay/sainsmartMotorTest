@@ -6,7 +6,7 @@
 
 int Distance = 0;  // Record the number of steps we've taken
 
-int stepTime = 1;
+int stepTime = 700;
 
 unsigned long pulse_width;
 
@@ -38,10 +38,10 @@ void motorRun(){
   digitalWrite(EN_PIN_AXIS_MOTOR,HIGH);
     digitalWrite(STEP_PIN_AXIS_MOTOR,HIGH);
     digitalWrite(DIR_PIN_AXIS_MOTOR,LOW);
-    delay(stepTime);
+    delayMicroseconds(stepTime);
     digitalWrite(STEP_PIN_AXIS_MOTOR,LOW);
     digitalWrite(DIR_PIN_AXIS_MOTOR,LOW);
-    delay(stepTime);
+    delayMicroseconds(stepTime);
 }
 
 
