@@ -14,7 +14,7 @@ unsigned long pulse_width;
 #define STEP_PIN_AXIS_MOTOR 2
 #define DIR_PIN_AXIS_MOTOR 3
 
-//MyAccelStepper axisStepper(STEP_PIN_AXIS_MOTOR, DIR_PIN_AXIS_MOTOR);
+MyAccelStepper axisStepper(STEP_PIN_AXIS_MOTOR, DIR_PIN_AXIS_MOTOR);
 
 int totalSteps = 200;
 int axisStepperPosition = 1;
@@ -26,7 +26,7 @@ boolean axisStepperFinishStep = false;
 void setup() {     
 
    Serial.begin(9600); 
-  // axisStepper.setSpeed(100);
+   axisStepper.setSpeed(900);
    setUpAxisMotor();
 }
 
@@ -35,13 +35,7 @@ void loop() {
 }
 
 void motorRun(){
-  digitalWrite(EN_PIN_AXIS_MOTOR,HIGH);
-    digitalWrite(STEP_PIN_AXIS_MOTOR,HIGH);
-    digitalWrite(DIR_PIN_AXIS_MOTOR,LOW);
-    delayMicroseconds(stepTime);
-    digitalWrite(STEP_PIN_AXIS_MOTOR,LOW);
-    digitalWrite(DIR_PIN_AXIS_MOTOR,LOW);
-    delayMicroseconds(stepTime);
+  axisStepper.runSpeed();
 }
 
 
